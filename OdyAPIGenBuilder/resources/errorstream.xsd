@@ -1,0 +1,42 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+  <xs:element name="ERRORSTREAM">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ERROR">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NUMBER" type="xs:int"/>
+              <xs:element name="TYPE" type="xs:string"/>
+              <xs:element name="LOCATION" type="xs:string"/>
+              <xs:element name="CONTEXT" type="xs:string"/>
+              <xs:element name="MSGSHORT" type="xs:string"/>
+              <xs:element name="MSGLONG" type="xs:string"/>
+              <xs:element name="RESOLUTION" type="xs:string"/>
+              <xs:element name="HELPFILE" type="xs:string"/>
+              <xs:element name="HELPCONTEXT" type="xs:string"/>
+              <xs:element name="TAGID" type="xs:string"/>
+              <xs:element name="TAGNORMCLS" type="xs:string"/>
+              <xs:element name="TAGERRORCLS" type="xs:string"/>
+              <xs:element name="LOGREQ" type="xs:string"/>
+              <xs:element name="LOGCOMP" type="xs:string"/>
+              <xs:element name="FETCHREQ" type="xs:string"/>
+              <xs:element name="FETCHCOMP" type="xs:string"/>
+              <xs:element name="DISPLAY" type="xs:string"/>
+              <xs:element name="FATAL" type="xs:string"/>
+              <xs:element name="REPLSTRS">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="REPLSTR" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="DISPLAYCAT" type="xs:string"/>
+              <xs:element name="SEVERITY" type="xs:string"/>
+            </xs:sequence>
+            <xs:attribute name="ERRORKEY" type="xs:string"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="prod">
+    <ItemGroup>
+	  <Solutions Include="OdyAPIGenerator.sln"/>
+    </ItemGroup>
+      <Message Text="Building and testing Prod shared-library"/>
+      <MSBuild Projects="@(Solutions)" Targets="OdyAPIGenBuilder:RunProd"/>
+	  <MSBuild Projects="@(Solutions)" Targets="OdyAPIGenLibrary:RunProd" Properties="AssemblyName=ProdAPIsLibrary" />
+  </Target>	
+  <Target Name="custom">
+    <ItemGroup>
+	  <Solutions Include="OdyAPIGenerator.sln"/>
+    </ItemGroup>
+      <Message Text="Building Custom shared-library"/>
+      <MSBuild Projects="@(Solutions)" Targets="OdyAPIGenBuilder:RunCustom"/>
+	  <MSBuild Projects="@(Solutions)" Targets="OdyAPIGenLibrary:RunCustom" Properties="AssemblyName=CustomAPIsLibrary" />
+  </Target>
+  <Target Name="run-example">
+    <ItemGroup>
+	  <Solutions Include="OdyAPIGenerator.sln"/>
+    </ItemGroup>
+      <Message Text="Building and testing Prod shared-library"/>
+      <MSBuild Projects="@(Solutions)" Targets="OdyAPIGenExample:Run" />
+  </Target>	
+</Project>

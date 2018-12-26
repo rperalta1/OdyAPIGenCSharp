@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2050
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OdyAPIGenBuilder", "OdyAPIGenBuilder\OdyAPIGenBuilder.csproj", "{791DD80F-F687-49C4-BAD9-597D64D91473}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{23344EDB-CC22-496F-9A39-15BC566559BD}"
+	ProjectSection(SolutionItems) = preProject
+		doc\BUILD_Cli.txt = doc\BUILD_Cli.txt
+		Builder.csproj = Builder.csproj
+		COPYING.LESSER = COPYING.LESSER
+		LICENSE.txt = LICENSE.txt
+		doc\Odyssey API Library Overview.docx = doc\Odyssey API Library Overview.docx
+		README.txt = README.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OdyApiGenExample", "OdyApiGenExample\OdyApiGenExample.csproj", "{84352A68-66C3-405A-9052-59E51CB2F953}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OdyAPIGenLibrary", "OdyAPIGenLibrary\OdyAPIGenLibrary.csproj", "{E381F000-DE6D-4894-A9BD-B11CB33629A2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{791DD80F-F687-49C4-BAD9-597D64D91473}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{791DD80F-F687-49C4-BAD9-597D64D91473}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{791DD80F-F687-49C4-BAD9-597D64D91473}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{791DD80F-F687-49C4-BAD9-597D64D91473}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84352A68-66C3-405A-9052-59E51CB2F953}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84352A68-66C3-405A-9052-59E51CB2F953}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84352A68-66C3-405A-9052-59E51CB2F953}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84352A68-66C3-405A-9052-59E51CB2F953}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E381F000-DE6D-4894-A9BD-B11CB33629A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E381F000-DE6D-4894-A9BD-B11CB33629A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E381F000-DE6D-4894-A9BD-B11CB33629A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E381F000-DE6D-4894-A9BD-B11CB33629A2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FD04C35B-9B13-4078-BAF2-681E2D879A92}
+	EndGlobalSection
+EndGlobal
