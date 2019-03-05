@@ -47,8 +47,13 @@ namespace gov.nmcourts.webservices.util
                 xElement.Value = xmlDocument.Value;
 
                 foreach (XAttribute attribute in xmlDocument.Attributes())
+                {
+                    if(attribute.IsNamespaceDeclaration)
+                    {
+                        continue;
+                    }  
                     xElement.Add(attribute);
-
+                }
                 return xElement;
             }
             XElement buffer = new XElement(xmlDocument.Name.LocalName, xmlDocument.Elements().Select(el => RemoveAllNamespaces(el)));
