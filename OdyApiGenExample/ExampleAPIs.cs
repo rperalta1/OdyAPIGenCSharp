@@ -1,4 +1,4 @@
-﻿/**************************************
+/**************************************
 
     Copyright (C) 2018  
     Judicial Information Division,
@@ -45,15 +45,20 @@ namespace OdyApiGenExample
             String userID = "4847";
             String nodeID = "1";
             String odysseyCaseNumber = "D307NH9700003";
-
+            
             Console.WriteLine("---------------------------------------------------------------");
             Console.WriteLine("Testing FindCaseByCaseNumber API -- finding caseId and node Id:");
             Console.WriteLine("---------------------------------------------------------------");
             GetResults results = FindCaseByCaseNumber(odysseyWebServiceInvoker, odysseyCaseNumber, nodeID, userID,
                                                         referenceNumber, source);
-
+            
             // GetResult holds caseID and nodeID needed for testing other APIs
             Console.WriteLine(results);
+
+            Console.WriteLine("-------------------------------------------------------------------------");
+            Console.WriteLine("Testing GetOdysseyReleaseLevel -- verifiyingthe release and current patch of an Odyssey server:");
+            Console.WriteLine("-------------------------------------------------------------------------");
+            GetOdysseyReleaseLevel(odysseyWebServiceInvoker, userID, referenceNumber, source);
 
             Console.WriteLine("---------------------------------------------------------------");
             Console.WriteLine("Testing LoadCase API -- loading case events from a case number:");
@@ -89,12 +94,13 @@ namespace OdyApiGenExample
             {
                 Console.WriteLine("Last document:" + getDocumentsResults);
             }
-
+            
             Console.WriteLine("--------------------------------------------");
             Console.WriteLine("Testing GetDocument -- downloading document:");
             Console.WriteLine("--------------------------------------------");
 
             // File extension will be added by the API
+            
             String fileName = "c:\\tmp\\downtest";
             GetDocument(odysseyWebServiceInvoker, getDocumentsResults.DocumentVersionID, fileName, "0",
                     userID, referenceNumber, source);
@@ -225,7 +231,7 @@ namespace OdyApiGenExample
             };
             return getDocumentsResults;
         }
-
+        
         private void GetDocument(OdysseyWebServiceInvoker odyInvoker, String documentVersionID, String fileName,
             String nodeID, String userID, String referenceNumber, String source)
         {
@@ -272,7 +278,7 @@ namespace OdyApiGenExample
             }
             Console.WriteLine("File was downloaded: " + fileName + " downloaded for document version Id " + documentVersionID);
         }
-
+        
         private String AddCaseEvent(OdysseyWebServiceInvoker odyInvoker, String caseID,
                         String eventType, String dateEvent, String comment,
                         String nodeID, String userID, String referenceNumber, String source)
@@ -389,6 +395,28 @@ namespace OdyApiGenExample
 
             Console.WriteLine("CCR was added to case: " + reply.CaseCrossReferenceNumberID);
         }
+
+        private void GetOdysseyReleaseLevel(OdysseyWebServiceInvoker odyInvoker, 
+			String userID, String referenceNumber, String source) {
+		
+		    generated.com.tylertech.xsdbindings.getodysseyreleaselevel.Message message = 
+				new generated.com.tylertech.xsdbindings.getodysseyreleaselevel.Message
+		        {
+                    NodeID = generated.com.tylertech.xsdbindings.getodysseyreleaselevel.BASEREQUIREDZERO.Item0,
+                    UserID = userID,
+                    ReferenceNumber = referenceNumber,
+                    Source = source,
+                    MessageType = generated.com.tylertech.xsdbindings.getodysseyreleaselevel.GETODYSSEYRELEASELEVELMESSAGETYPENAME.GetOdysseyReleaseLevel
+                };
+					
+		        generated.com.tylertech.xsdbindings.getodysseyreleaselevelresult.Result reply = 
+				    (generated.com.tylertech.xsdbindings.getodysseyreleaselevelresult.Result) 
+				        odyInvoker.Invoker(message, "GetOdysseyReleaseLevelResult", 
+                            typeof(generated.com.tylertech.xsdbindings.getodysseyreleaselevelresult.Result));
+		
+		        Console.WriteLine("GetOdysseyReleaseLevel release: " + reply.Release);
+		        Console.WriteLine("GetOdysseyReleaseLevel path: " + reply.Patch);
+	    }
     }
     
     class GetResults
