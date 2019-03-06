@@ -1,4 +1,4 @@
-﻿/**************************************
+/**************************************
 
     Copyright (C) 2018  
     Judicial Information Division,
@@ -47,29 +47,36 @@ namespace gov.nmcourts.webservices.util
                 xElement.Value = xmlDocument.Value;
 
                 foreach (XAttribute attribute in xmlDocument.Attributes())
+                {
+                    if (attribute.IsNamespaceDeclaration)
+                    {
+                        continue;
+                    }
                     xElement.Add(attribute);
-
+                }
                 return xElement;
             }
             XElement buffer = new XElement(xmlDocument.Name.LocalName, xmlDocument.Elements().Select(el => RemoveAllNamespaces(el)));
             foreach (XAttribute attribute in xmlDocument.Attributes())
             {
-                if(attribute.IsNamespaceDeclaration){
+                if (attribute.IsNamespaceDeclaration)
+                {
                     continue;
-                }                
+                }
                 buffer.Add(attribute);
             }
             return buffer;
         }
 
-        public static String MarshallRequest(Object request) {
+        public static String MarshallRequest(Object request)
+        {
 
             XmlSerializer serializer1 = new XmlSerializer(request.GetType());
             String xmlDocument = "";
 
             using (StringWriter stm = new StringWriter())
             {
-                using(XmlWriter writer = XmlWriter.Create(stm))
+                using (XmlWriter writer = XmlWriter.Create(stm))
                 {
                     serializer1.Serialize(writer, request);
                     xmlDocument = stm.ToString();
